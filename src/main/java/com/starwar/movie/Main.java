@@ -1,7 +1,24 @@
 package com.starwar.movie;
 
-public class Main {
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+@SpringBootApplication
+public class Main extends SpringBootServletInitializer implements CommandLineRunner {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        //System.out.println("Hello world!");
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(Main.class);
+    }
+
+    @Override
+    public void run(String... strings) throws Exception {
+        System.out.println("========================================================================== " +
+                "APPLICATION STATUS: RUNNING ==========================================================================");
     }
 }
