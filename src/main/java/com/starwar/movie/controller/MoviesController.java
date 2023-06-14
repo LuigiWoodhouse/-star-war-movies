@@ -2,6 +2,7 @@ package com.starwar.movie.controller;
 
 import com.starwar.movie.DAO.MoviesDAO;
 import com.starwar.movie.model.Movies;
+import com.starwar.movie.util.MovieData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +16,8 @@ import java.util.List;
 @RequestMapping("/movies")
 public class MoviesController {
 
-    @Autowired
-    MoviesDAO moviesDAO;
+    private MoviesDAO moviesDAO;
+
 
     @GetMapping("/{personId}")
     public ResponseEntity<List<Movies>> getMoviesByPersonId(@PathVariable int personId) {
@@ -25,9 +26,9 @@ public class MoviesController {
     }
 
     @GetMapping("/{movieId}")
-    public ResponseEntity<Movies> getMovieData(@PathVariable Integer movieId) {
-        Movies movies = moviesDAO.getMovieData(movieId);
-        return ResponseEntity.ok(movies);
+    public ResponseEntity<MovieData> getMovieData(@PathVariable Integer movieId) {
+        MovieData movieData = moviesDAO.getMovieData(movieId);
+        return ResponseEntity.ok(movieData);
     }
     @GetMapping("/all")
     public ResponseEntity<List<Movies>> getMovies(@RequestParam(defaultValue = "0") int page,

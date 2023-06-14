@@ -14,8 +14,8 @@ import java.util.List;
 @RequestMapping("/people")
 public class PeopleController {
 
-    @Autowired
-    PeopleDAO peopleDAO;
+
+    private PeopleDAO peopleDAO;
 
     @GetMapping("/all")
     public ResponseEntity<List<People>> getPeople(@RequestParam(defaultValue = "0") int page,
