@@ -19,7 +19,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class MoviesDAOImpl implements MoviesDAO {
 
     @Autowired
@@ -28,7 +28,6 @@ public class MoviesDAOImpl implements MoviesDAO {
     StarsRepository starsRepository;
     @Autowired
     MoviesRepository moviesRepository;
-
     @Autowired
     RatingsRepository ratingsRepository;
 

@@ -16,7 +16,8 @@ import java.util.List;
 @RequestMapping("/movies")
 public class MoviesController {
 
-    private MoviesDAO moviesDAO;
+    @Autowired
+    MoviesDAO moviesDAO;
 
 
     @GetMapping("/{personId}")
@@ -38,7 +39,4 @@ public class MoviesController {
         List<Movies> movies = moviesDAO.getMovies(page, size, sortBy, sortOrder);
         return ResponseEntity.ok(movies);
     }
-
-
-
 }
