@@ -4,11 +4,5 @@ import com.starwar.movie.model.People;
 import java.util.List;
 public interface PeopleDAO {
 
-    People save(People people);
-
-    People findById(Integer id);
-
-    List<People> findAll();
-
-    void delete(People people);
+    List<People> getPeople(int page, int size, String sortBy, String sortOrder);
 }

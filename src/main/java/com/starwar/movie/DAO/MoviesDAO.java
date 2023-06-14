@@ -1,14 +1,15 @@
 package com.starwar.movie.DAO;
 
 import com.starwar.movie.model.Movies;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 public interface MoviesDAO {
 
-    Movies save(Movies movie);
+    List<Movies> getMoviesByPersonId(Integer personId);
 
-    Movies findById(Integer id);
+    Movies getMovieData(Integer movieId);
 
-    List<Movies> findAll();
+    List<Movies> getMovies(int page, int size, String sortBy, String sortOrder);
 
-    void delete(Movies movie);
+    Pageable createPageable(int page, int size, String sortBy, String sortOrder);
 }

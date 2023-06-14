@@ -8,6 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "Movies")
@@ -24,4 +27,7 @@ public class Movies {
 
     @Column(name = "year")
     private int year;
+
+    public Movies(Movies movie, List<Directors> directors, List<Stars> stars, List<Ratings> ratings) {
+    }
 }
