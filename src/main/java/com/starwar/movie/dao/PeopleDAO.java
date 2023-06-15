@@ -1,4 +1,4 @@
-package com.starwar.movie.DAO;
+package com.starwar.movie.dao;
 
 import com.starwar.movie.model.People;
 import java.util.List;

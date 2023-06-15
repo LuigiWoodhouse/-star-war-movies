@@ -1,6 +1,6 @@
 package com.starwar.movie.impl;
 
-import com.starwar.movie.DAO.MoviesDAO;
+import com.starwar.movie.dao.MoviesDAO;
 import com.starwar.movie.exception.MovieNotFoundException;
 import com.starwar.movie.model.Directors;
 import com.starwar.movie.model.Movies;

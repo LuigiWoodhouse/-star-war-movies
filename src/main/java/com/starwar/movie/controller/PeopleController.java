@@ -1,6 +1,6 @@
 package com.starwar.movie.controller;
 
-import com.starwar.movie.DAO.PeopleDAO;
+import com.starwar.movie.dao.PeopleDAO;
 import com.starwar.movie.model.People;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,8 @@ import java.util.List;
 public class PeopleController {
 
 
-    private PeopleDAO peopleDAO;
+    @Autowired
+    PeopleDAO peopleDAO;
 
     @GetMapping("/all")
     public ResponseEntity<List<People>> getPeople(@RequestParam(defaultValue = "0") int page,

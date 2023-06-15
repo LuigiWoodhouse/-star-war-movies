@@ -1,6 +1,6 @@
 package com.starwar.movie.controller;
 
-import com.starwar.movie.DAO.MoviesDAO;
+import com.starwar.movie.dao.MoviesDAO;
 import com.starwar.movie.model.Movies;
 import com.starwar.movie.util.MovieData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +20,13 @@ public class MoviesController {
     MoviesDAO moviesDAO;
 
 
-    @GetMapping("/{personId}")
+    @GetMapping("/person/{personId}")
     public ResponseEntity<List<Movies>> getMoviesByPersonId(@PathVariable int personId) {
         List<Movies> movies = moviesDAO.getMoviesByPersonId(personId);
         return ResponseEntity.ok(movies);
     }
 
-    @GetMapping("/{movieId}")
+    @GetMapping("/movie-data/{movieId}")
     public ResponseEntity<MovieData> getMovieData(@PathVariable Integer movieId) {
         MovieData movieData = moviesDAO.getMovieData(movieId);
         return ResponseEntity.ok(movieData);

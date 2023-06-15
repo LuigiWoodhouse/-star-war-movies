@@ -23,5 +23,5 @@ public class People {
     private String name;
 
     @Column(name = "birth")
-    private int birth;
+    private Integer birth;
 }
