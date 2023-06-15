@@ -14,4 +14,14 @@ public interface MoviesDAO {
     List<Movies> getMovies(int page, int size, String sortBy, String sortOrder);
 
     Pageable createPageable(int page, int size, String sortBy, String sortOrder);
+
+    Movies save(Movies movie);
+
+    Movies findById(Integer id);
+
+    Movies updateById(Movies movies, Integer id);
+
+    List<Movies> findAll();
+
+    void delete(Movies movie);
 }

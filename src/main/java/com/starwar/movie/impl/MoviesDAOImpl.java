@@ -19,6 +19,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class MoviesDAOImpl implements MoviesDAO {
 
@@ -76,5 +78,44 @@ public class MoviesDAOImpl implements MoviesDAO {
         }
         Sort sort = Sort.by(direction, sortBy);
         return PageRequest.of(page, size, sort);
+    }
+
+
+    @Override
+    public Movies save(Movies movies) {
+        return moviesRepository.save(movies);
+    }
+
+    @Override
+    public Movies findById(Integer id) {
+        Optional<Movies> optionalRatings = moviesRepository.findById(id);
+        return optionalRatings.orElse(null);
+    }
+
+    @Override
+    public List<Movies> findAll() {
+        return moviesRepository.findAll();
+    }
+
+    @Override
+    public Movies updateById(Movies movies, Integer id) {
+        Optional<Movies> optionalMovies = moviesRepository.findById(id);
+
+        if (optionalMovies.isPresent()) {
+            Movies existingMovie = optionalMovies.get();
+
+            existingMovie.setTitle(movies.getTitle());
+            existingMovie.setYear(movies.getYear());
+
+
+            return moviesRepository.save(existingMovie);
+        } else {
+            throw new IllegalArgumentException("Movie not found with ID: " + id);
+        }
+    }
+
+    @Override
+    public void delete(Movies movies) {
+        moviesRepository.delete(movies);
     }
 }
