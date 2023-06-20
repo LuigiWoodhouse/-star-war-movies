@@ -83,6 +83,13 @@ public class MoviesDAOImpl implements MoviesDAO {
 
     @Override
     public Movies save(Movies movies) {
+
+        Movies _newMovie = new Movies();
+
+        _newMovie.setId(_newMovie.getId());
+        _newMovie.setTitle(_newMovie.getTitle());
+        _newMovie.setYear(_newMovie.getYear());
+
         return moviesRepository.save(movies);
     }
 
@@ -90,11 +97,6 @@ public class MoviesDAOImpl implements MoviesDAO {
     public Movies findById(Integer id) {
         Optional<Movies> optionalRatings = moviesRepository.findById(id);
         return optionalRatings.orElse(null);
-    }
-
-    @Override
-    public List<Movies> findAll() {
-        return moviesRepository.findAll();
     }
 
     @Override
@@ -115,7 +117,7 @@ public class MoviesDAOImpl implements MoviesDAO {
     }
 
     @Override
-    public void delete(Movies movies) {
-        moviesRepository.delete(movies);
+    public void deleteById(Integer id) {
+        moviesRepository.deleteById(id);
     }
 }

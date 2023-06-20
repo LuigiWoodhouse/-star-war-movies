@@ -48,13 +48,6 @@ public class MoviesController {
         return ResponseEntity.ok(movies);
     }
 
-    @PostMapping
-    @Secured("ROLE_ADMIN")
-    public ResponseEntity<Movies> saveRMovies(@RequestBody Movies movies) {
-        Movies savedMovies = moviesDAO.save(movies);
-        return ResponseEntity.ok(savedMovies);
-    }
-
     @GetMapping("/{id}")
     @Secured({"ROLE_REGULAR","ROLE_ADMIN"})
     public ResponseEntity<Movies> getRatingsById(@PathVariable("id") Integer id) {
@@ -65,25 +58,23 @@ public class MoviesController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    @GetMapping
-    @Secured({"ROLE_REGULAR","ROLE_ADMIN"})
-    public ResponseEntity<List<Movies>> getAllRatings() {
-        List<Movies> allMovies = moviesDAO.findAll();
-        return ResponseEntity.ok(allMovies);
-    }
-
-    @DeleteMapping
+    @DeleteMapping("/delete/{id}")
     @Secured("ROLE_ADMIN")
-    public ResponseEntity<Void> deleteRatings(@RequestBody Movies movies) {
-        moviesDAO.delete(movies);
+    public ResponseEntity<String> deleteMovies(@PathVariable("id") Integer id) {
+        moviesDAO.deleteById(id);
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     @Secured("ROLE_ADMIN")
     public ResponseEntity<Movies> updateMovieById(@RequestBody Movies movies, @PathVariable("id") Integer id) {
         Movies updatedMovie = moviesDAO.updateById(movies, id);
         return ResponseEntity.ok(updatedMovie);
+    }
+    @PostMapping("/save/new")
+    @Secured("ROLE_ADMIN")
+    public ResponseEntity<Movies> saveRMovies(@RequestBody Movies movies) {
+        Movies savedMovies = moviesDAO.save(movies);
+        return ResponseEntity.ok(savedMovies);
     }
 }

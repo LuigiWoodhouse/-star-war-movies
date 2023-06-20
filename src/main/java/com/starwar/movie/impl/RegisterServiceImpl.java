@@ -55,7 +55,7 @@ public class RegisterServiceImpl implements RegisterService {
             Set<String> strRoles = registerRequest.getRole();
             Set<Role> role = new HashSet<>();
             if (strRoles == null) {
-                Role userRole = roleRepository.findByRoleName(ERole.ROLE_ADMIN)
+                Role userRole = roleRepository.findByRoleName(ERole.ROLE_REGULAR)
                         .orElseThrow(() -> new RuntimeException("ERROR: Role is not found."));
                 role.add(userRole);
             }

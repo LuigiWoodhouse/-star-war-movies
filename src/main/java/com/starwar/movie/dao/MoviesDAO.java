@@ -21,7 +21,5 @@ public interface MoviesDAO {
 
     Movies updateById(Movies movies, Integer id);
 
-    List<Movies> findAll();
-
-    void delete(Movies movie);
+    void deleteById(Integer id);
 }
